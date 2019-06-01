@@ -1,0 +1,38 @@
+{
+  "name": "@nebulae/backend-node-tools",
+  "version": "0.0.1",
+  "description": "Tools collection for NebulaE Microservices Node Backends",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --recursive --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NebulaEngineering/backend-node-tools.git"
+  },
+  "keywords": [
+    "NebulaE",
+    "MicroServices",
+    "BackEnd",
+    "Tools",
+    "Crosscutting",
+    "Node",
+    "rxjs"
+  ],
+  "author": "sebastian.molano@nebulae.com.co",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/NebulaEngineering/backend-node-tools/issues"
+  },
+  "homepage": "https://github.com/NebulaEngineering/backend-node-tools#readme",
+  "dependencies": {
+    "@google-cloud/pubsub": "^0.29.1",
+    "async-mqtt": "^2.3.0",
+    "rxjs": "^6.5.2",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
