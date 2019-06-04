@@ -1,9 +1,15 @@
 'use strict'
 
-const EventStore = require('./lib/EventStore');
-const Event = require('./lib/entities/Event');
+const auth = require('./lib/auth');
+const broker = require('./lib/broker');
+const cqrs = require('./lib/cqrs');
+const error = require('./lib/error');
+const log = require('./lib/log');
 
 module.exports = {
-    EventStore,
-    Event,
+    auth,
+    broker,
+    cqrs,
+    error,
+    log
 };

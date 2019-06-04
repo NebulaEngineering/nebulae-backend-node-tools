@@ -41,8 +41,8 @@ process.env | desc | values | defaults
 ##### Example:
 
 ```js
-const { ConsoleLogger } = require('@nebulae/backend-node-tools/log');
-const { CustomError } = require('@nebulae/backend-node-tools/error');
+const { ConsoleLogger } = require('@nebulae/backend-node-tools').log;
+const { CustomError } = require('@nebulae/backend-node-tools').error;
 
 ConsoleLogger.d('This is a DEBUG Log');
 ConsoleLogger.i('This is an INFO Log');
@@ -62,7 +62,7 @@ Node Error extension to includes name, code and method.  This custom error is co
 
 ```js
 
-const { CustomError } = require('@nebulae/backend-node-tools/error');
+const { CustomError } = require('@nebulae/backend-node-tools').error;
 
 const myCustomError = new CustomError(
     'ERR_NAME', // Error name
@@ -81,8 +81,8 @@ returns a RxJS Observable of validated roles if succed or custom error if the ve
 ##### Example:
 
 ```js
-const { RoleValidator } = require('@nebulae/backend-node-tools/auth');
-const { CustomError, PERMISSION_DENIED } = require('../../lib/error');
+const { RoleValidator } = require('@nebulae/backend-node-tools').auth;
+const { CustomError, PERMISSION_DENIED } =require('@nebulae/backend-node-tools').error;
 
 const userRoles = ['OPERATOR', 'PLATFORM-ADMIN', 'BUSINESS-OWNER'];
 const neededRoles = ['PLATFORM-ADMIN', 'SYSADMIN'];
@@ -107,7 +107,7 @@ Returns true if the user has at least one of the required roles or false otherwi
 ##### Example:
 
 ```js
-const { RoleValidator } = require('@nebulae/backend-node-tools/auth');
+const { RoleValidator } = require('@nebulae/backend-node-tools').auth;
 
 const userRoles = ['OPERATOR', 'PLATFORM-ADMIN', 'BUSINESS-OWNER'];
 const neededRoles = ['PLATFORM-ADMIN', 'SYSADMIN'];
@@ -132,7 +132,7 @@ process.env | desc | values | defaults
 ##### Example:
 
 ```js
-const { brokerFactory } = require('@nebulae/backend-node-tools/broker');
+const { brokerFactory } = require('@nebulae/backend-node-tools').broker;
 
 // generates a multiton instance
 const broker = brokerFactory('MQTT'); // Valid options: MQTT | PUBSUB
@@ -159,7 +159,7 @@ Returns a RxJS Observable stream
 #####  Example:
 
 ```js
-const { CqrsResponseHelper } = require('@nebulae/backend-node-tools/cqrs');
+const { CqrsResponseHelper } = require('@nebulae/backend-node-tools').cqrs;
 
 const { of } = require('rxjs');
 const { mergeMap } = require('rxjs/operators');
