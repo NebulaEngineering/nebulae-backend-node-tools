@@ -4,24 +4,24 @@
 
 Backend-Node-Tools is a client library with several crosscutting tools for developing micro-backends based [NebulaE](https://nebulae.com.co/) Microservices Framework
 
-- [Installation](#installation)
-- [Console Logger](#console-logger)
-      - [Environment Variables:](#environment-variables)
-      - [Example:](#example)
-- [Custom Error](#custom-error)
-      - [Example:](#example-1)
-- [Auth Tools](#auth-tools)
-  - [User roles verification](#user-roles-verification)
-      - [Example:](#example-2)
-  - [User has roles](#user-has-roles)
-      - [Example:](#example-3)
-- [Broker Factory](#broker-factory)
-      - [Environment Variables:](#environment-variables-1)
-      - [Example:](#example-4)
-- [CQRS tools](#cqrs-tools)
-  - [build Success Response](#build-success-response)
-  - [handle Error](#handle-error)
-      - [Example:](#example-5)
+- [Installation](#Installation)
+- [Console Logger](#Console-Logger)
+  - [Environment Variables:](#Environment-Variables)
+  - [Example:](#Example)
+- [Custom Error](#Custom-Error)
+  - [Example:](#Example-1)
+- [Auth Tools](#Auth-Tools)
+  - [User roles verification](#User-roles-verification)
+    - [Example:](#Example-2)
+  - [User has roles](#User-has-roles)
+    - [Example:](#Example-3)
+- [Broker Factory](#Broker-Factory)
+  - [Environment Variables:](#Environment-Variables-1)
+  - [Example:](#Example-4)
+- [CQRS tools](#CQRS-tools)
+  - [build Success Response](#build-Success-Response)
+  - [handle Error](#handle-Error)
+  - [Example:](#Example-5)
 
 
 ## Installation
@@ -33,12 +33,12 @@ npm install @nebulae/backend-node-tools --save
 ## Console Logger
 Tools for standard console logger
 
-##### Environment Variables:
+### Environment Variables:
 process.env | desc | values | defaults
 --- | --- | --- | ---
 `LOG_LEVEL` | Log Level Threshold | `DEBUG` `INFO` `WARN` `ERROR` `FATAL` | `WARN`
 
-##### Example:
+### Example:
 
 ```js
 const { ConsoleLogger } = require('@nebulae/backend-node-tools').log;
@@ -58,7 +58,7 @@ ConsoleLogger.f('This is a FATAL Log', new Error('Node Error'));
 ## Custom Error
 Node Error extension to includes name, code and method.  This custom error is compatible with CQRS responses.
 
-##### Example:
+### Example:
 
 ```js
 
@@ -78,7 +78,7 @@ const myCustomError = new CustomError(
 Checks if the user has the role needed, otherwise throws an error according to the passed parameters.
 returns a RxJS Observable of validated roles if succed or custom error if the verification failed
 
-##### Example:
+#### Example:
 
 ```js
 const { RoleValidator } = require('@nebulae/backend-node-tools').auth;
@@ -104,7 +104,7 @@ RoleValidator.verifyRoles$(
 ### User has roles
 Returns true if the user has at least one of the required roles or false otherwise
 
-##### Example:
+#### Example:
 
 ```js
 const { RoleValidator } = require('@nebulae/backend-node-tools').auth;
@@ -121,15 +121,16 @@ const hasNeededRoles = RoleValidator.hasRoles(userRoles,neededRoles);
 ## Broker Factory
 Creates a MQTT or Google Cloud PubSub Broker based on RxJS with pre-build functions for listening and sending messages
 
-##### Environment Variables:
+### Environment Variables:
 process.env | desc | values | defaults
 --- | --- | --- | ---
 `BROKER_TYPE` | Default broker to use | `MQTT` `PUBSUB` | N/A
 `GOOGLE_APPLICATION_CREDENTIALS` | gcloud-service-key json file to configure PubSub | gcloud-service-key json file | N/A
+`MICROBACKEND_KEY` | The MicroBackend unique Key is used as PubSub Subscription suffix | ms-lineadirecta-generator_mbe_lineadirecta-generator | `default-suffix`
 `MQTT_SERVER_URL` | mqtt server URL | mqtt://host:port | N/A
 `REPLY_TIMEOUT` | send & recieve response timeout millis | milliseconds (number) | 2000
 
-##### Example:
+### Example:
 
 ```js
 const { brokerFactory } = require('@nebulae/backend-node-tools').broker;
@@ -156,7 +157,7 @@ Returns a RxJS Observable stream
 gracefully handles an exception on a CQRS request-response stream
 Returns a RxJS Observable stream
 
-#####  Example:
+###  Example:
 
 ```js
 const { CqrsResponseHelper } = require('@nebulae/backend-node-tools').cqrs;
